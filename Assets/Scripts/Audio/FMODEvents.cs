@@ -5,27 +5,30 @@ using FMODUnity;
 
 public class FMODEvents : MonoBehaviour
 {
-	[field: Header("sfx_bird_accelerate")]
-	[field: SerializeField] public EventReference sfxBirdAccelerate { get; private set; }
-	public static FMODEvents instance { get; private set; }
+    [field: Header("ambient_bg")]
+    [field: SerializeField] public EventReference ambient_bg { get; private set; }
 
-	public void Awake()
-	{
-		if (instance != null)
-		{
-			Debug.LogError("more than one FMOD Events instances detected in one scene! that cant be good.");
-		}
-		instance = this;
-	}
-	// Start is called before the first frame update
-	void Start()
-	{
+    // [field: Header("Music")]
+    // [field: SerializeField] public EventReference music { get; private set; }
 
-	}
+    [field: Header("sfx_bird_accelerate")]
+    [field: SerializeField] public EventReference sfxBirdAccelerate { get; private set; }
 
-	// Update is called once per frame
-	void Update()
-	{
+	// [field: Header("sfx_flaying")]
+	// [field: SerializeField] public EventReference sfxFlying { get; private set; }
 
-	}
+    // [field: Header("Coin SFX")]
+    // [field: SerializeField] public EventReference coinCollected { get; private set; }
+    // [field: SerializeField] public EventReference coinIdle { get; private set; }
+
+    public static FMODEvents instance { get; private set; }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("Found more than one FMOD Events instance in the scene.");
+        }
+        instance = this;
+    }
 }
